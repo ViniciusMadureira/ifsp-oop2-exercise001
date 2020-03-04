@@ -39,11 +39,8 @@ class ItemStore:
         return False
 
     @staticmethod
-    def update(product: Item, amount: int):        
-        if ProductStore.exists(product_name): 
-            ProductStore.products[product.name] = ProductStore.products.pop(product_name)
-            return True
-        return False
+    def update():        
+        pass
 
     @staticmethod
     def exists(product_name: str):

@@ -15,7 +15,7 @@ from collections import OrderedDict
 from product import Product
 
 """
-ProductStore: Controller add, delete and update Product type objects in static product's dictionary (OrderedDict).
+ProductStore: Controller to add, delete and update Product type objects in static product's dictionary (OrderedDict).
 """
 class ProductStore:
 

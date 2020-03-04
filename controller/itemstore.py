@@ -15,7 +15,7 @@ from collections import OrderedDict
 from item import Item
 
 """
-ItemStore: Controller add, delete and list Item type objects in static item's dictionary (OrderedDict).
+ItemStore: Controller to add, delete and list Item type objects in static item's dictionary (OrderedDict).
 """
 class ItemStore:
 
@@ -39,8 +39,8 @@ class ItemStore:
         return False
 
     @staticmethod
-    def update():        
-        pass
+    def clear():        
+        ItemStore.items = OrderedDict()
 
     @staticmethod
     def exists(product_name: str):

@@ -12,7 +12,7 @@ __status__ = "Testing"
 from product import Product
 
 """
-Product class: Model for Item type objects.
+Item class: Model for Item type objects.
 Each item consists of a product (Product) and its amount (int).
 """
 class Item:

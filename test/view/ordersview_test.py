@@ -65,24 +65,4 @@ if __name__ == "__main__":
     # Inserting items on order
     ov = OrdersView()
     ov.add_order()    
-    ov.list_orders()
-    
-    while True:
-        print(" Menu ".center(80, "#"))
-        print("Produtos:\n\t1 - Adicionar\n\t2 - Remover\n\t3 - Atualizar\n\t4 - Listar\nOrdens:\n\t5 - Criar\n\t6 - Listar\n7 - Sair")
-        answer = int(input())
-        print(answer)
-        if answer == 1:
-            pv.add_product()
-        elif answer == 2:
-            pv.delete_product()
-        elif answer == 3:
-            pv.update()
-        elif answer == 4:
-            pv.list_products()
-        elif answer == 5:
-            ov.add_order()
-        elif answer == 6:
-            ov.list_orders(1)
-        elif answer == 7:
-            break
+    ov.list_orders()  

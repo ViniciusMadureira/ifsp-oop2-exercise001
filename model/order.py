@@ -13,38 +13,42 @@ import os
 from item import Item
 
 """
-Product class: Model for Order type objects.
+Order class: Model for Order type objects.
 Each order consists of a list of items (list(Item)), which are not repeated. Each item has a product (Product) - which has a name (str) and a value (float), and its amount (float). As the final attribute of the order, the total value (float) is calculated after all items are inserted.
 """
 class Order:
 
     def __init__(self):
-        self.__items = {}
+        self.__ido = None
+        self.__items = []
         self.__total = 0
-        pass
+
+    @property
+    def ido(self):
+        return self.__ido
+
+    @ido.setter
+    def ido(self, ido: int):        
+        if ido > 0:
+            self.__ido = ido
 
     @property
     def total(self):
         return self.__total
     
-    def calculate_total(self):
-        for item in self.__items.values():
-            self.__total += item.product.value * item.amount
+    def calculate_total(self):        
+        for i in self.__items:
+            for item in i.values():
+                self.__total += item.product.value * item.amount
 
     @property
     def items(self):
         return self.__items
 
-    def add_item(self, product_name: str, amount: int, products: dict):
-        if product_name in products.keys():
-            item = Item()
-            item.product = products[product_name]
-            item.amount = amount
-            if item.is_valid():
-                if item.product.name not in self.__items.keys():
-                    self.__items[item.product.name] = item
-                else:
-                    self.__items[item.product.name].amount += item.amount
+    @items.setter
+    def items(self, items):
+        if len(items) > 0:
+            self.__items.append(items)
 
     @staticmethod
     def clear_console():
@@ -76,4 +80,4 @@ class Order:
         print("Valor final: {}.".format(total))
 
     def is_valid(self):
-        return len(self.__items > 0)  
+        return len(self.__items) > 0

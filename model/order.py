@@ -9,8 +9,8 @@ __maintainer__ = "Vinícius Madureira"
 __email__ = "viniciusmadureira@outlook.com"
 __status__ = "Testing"
 
-from item import Item
 import os
+from item import Item
 
 """
 Product class: Model for Order type objects.
@@ -46,7 +46,8 @@ class Order:
                 else:
                     self.__items[item.product.name].amount += item.amount
 
-    def clear_console(self):
+    @staticmethod
+    def clear_console():
         try:
             # Clear console on Windows Systems
             clear = lambda: os.system("cls")
@@ -55,15 +56,24 @@ class Order:
             try:
                 # Clear console on Unix Systems
                 clear = lambda: os.system("clear")
+                clear()
+                clear = lambda: os.system("reset")
+                clear()
             except:
                 pass
-    
+
+    @staticmethod
+    def format_currency(value, symbol, decimal_separator):
+        return symbol + f"{value:.2f}".replace(".", decimal_separator)
+
     def print(self):
-        self.clear_console()
+        Order.clear_console()
         for item in self.__items.values():
-            sub_total = item.product.value * item.amount
-            print("Item: {}.\nQuantidade: {}.\nValor unitário: R${:.2f}.\nValor total: R${:.2f}.\n".format(item.product.name, item.amount, item.product.value, sub_total))            
-        print("Valor final: R${:.2f}.".format(self.__total))   
+            sub_total = Order.format_currency(item.product.value * item.amount, "R$", ",")
+            value = Order.format_currency(item.product.value, "R$", ",")
+            print("Item: {}.\nQuantidade: {}.\nValor unitário: {}.\nSubtotal: {}.\n".format(item.product.name, item.amount, value, sub_total))
+        total = Order.format_currency(self.__total, "R$", ",")
+        print("Valor final: {}.".format(total))
 
     def is_valid(self):
         return len(self.__items > 0)  

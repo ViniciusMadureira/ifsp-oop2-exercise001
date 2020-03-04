@@ -17,7 +17,7 @@ Each product contains a name (str), a description (str) and a value (float).
 """
 class Product:
 
-    def __init__(self, name: str = "", description: str = "", value: float = 0.0):
+    def __init__(self, name: str = "", description: str = "", value: float = None):
         self.name = name
         self.description = description
         self.value = value

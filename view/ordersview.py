@@ -45,16 +45,21 @@ class OrdersView:
         return True
     
     @staticmethod
-    def list_orders(n: int = 0):   
+    def list_orders(amount: int):   
         counter = 1
-        print("\n" + " Orders ".center(60, "%") + "\n")        
-        for order in OrderStore.orders.values():
-            print(" Order {} ".format(str(1).zfill(6)).center(40, "#"))
-            for i in order.items:
-                for item in i.values():                    
-                    value = format_currency(item.product.value, "R$", ",")
-                    subtotal = format_currency(item.product.value * item.amount, "R$", ",")
-                    print("ID: {}.\nProduto: {}.\nValor unitário: {}.\nQuantidade: {}.\nSubtotal: {}.\n".format(counter, item.product.name, value, item.amount, subtotal))
-                    counter += 1
-            total = format_currency(order.total, "R$", ",")
-            print("Total: {}.\n".format(total))
+        print("\n" + " Orders ".center(60, "%") + "\n")
+        print(len(OrderStore.orders.items()))
+        index = len(OrderStore.orders.items()) - amount
+        if index < 0:
+            index = 0        
+        for oid, order in OrderStore.orders.items():  
+            if oid > index:          
+                print(" Order {} ".format(str(oid).zfill(6)).center(40, "#"))            
+                for i in order.items:
+                    for item in i.values():                    
+                        value = format_currency(item.product.value, "R$", ",")
+                        subtotal = format_currency(item.product.value * item.amount, "R$", ",")
+                        print("ID: {}.\nProduto: {}.\nValor unitário: {}.\nQuantidade: {}.\nSubtotal: {}.\n".format(counter, item.product.name, value, item.amount, subtotal))
+                        counter += 1
+                total = format_currency(order.total, "R$", ",")
+                print("Total: {}.\n".format(total))

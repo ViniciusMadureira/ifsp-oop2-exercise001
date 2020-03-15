@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file alias="window_icon.png">images/window_icon.png</file>
+        <file alias="database.db">controller/database/database.db</file>
+    </qresource>
+</RCC>

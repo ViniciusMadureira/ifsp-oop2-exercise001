@@ -1,0 +1,65 @@
+DROP TABLE Category CASCADE CONSTRAINTS;
+CREATE TABLE Category (
+ id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+ name VARCHAR(60) NOT NULL,
+ description VARCHAR(100)
+);
+
+
+DROP TABLE Order CASCADE CONSTRAINTS;
+CREATE TABLE Order (
+ id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+ date TIMESTAMP(10) NOT NULL,
+ CFP CHAR(11),
+ CNPJ CHAR(14)
+);
+
+
+DROP TABLE Product CASCADE CONSTRAINTS;
+CREATE TABLE Product (
+ id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+ name VARCHAR(100) NOT NULL,
+ description VARCHAR(400),
+ value NUMERIC(8,2) NOT NULL,
+ id_category INT NOT NULL,
+
+ FOREIGN KEY (id_category) REFERENCES Category (id)
+);
+
+
+DROP TABLE Item CASCADE CONSTRAINTS;
+CREATE TABLE Item (
+ id_order INT NOT NULL,
+ id_product INT NOT NULL,
+ number INT NOT NULL,
+ amount INT NOT NULL,
+ discount NUMERIC(8,2),
+
+ PRIMARY KEY (id_order,id_product),
+
+ FOREIGN KEY (id_order) REFERENCES Order (id),
+ FOREIGN KEY (id_product) REFERENCES Product (id)
+);
+
+
+COMMENT ON TABLE Category IS 'Category';
+COMMENT ON COLUMN Category.id IS 'id';
+COMMENT ON COLUMN Category.name IS 'name';
+COMMENT ON COLUMN Category.description IS 'description';
+COMMENT ON TABLE Order IS 'Order';
+COMMENT ON COLUMN Order.id IS 'id';
+COMMENT ON COLUMN Order.date IS 'date';
+COMMENT ON COLUMN Order.CFP IS 'CFP';
+COMMENT ON COLUMN Order.CNPJ IS 'CNPJ';
+COMMENT ON TABLE Product IS 'Product';
+COMMENT ON COLUMN Product.id IS 'id';
+COMMENT ON COLUMN Product.name IS 'name';
+COMMENT ON COLUMN Product.description IS 'description';
+COMMENT ON COLUMN Product.value IS 'value';
+COMMENT ON COLUMN Product.id_category IS 'id_category';
+COMMENT ON TABLE Item IS 'Item';
+COMMENT ON COLUMN Item.id_order IS 'id_order';
+COMMENT ON COLUMN Item.id_product IS 'id_product';
+COMMENT ON COLUMN Item.number IS 'number';
+COMMENT ON COLUMN Item.amount IS 'amount';
+COMMENT ON COLUMN Item.discount IS 'discount';

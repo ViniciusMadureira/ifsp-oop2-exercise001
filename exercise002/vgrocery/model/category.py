@@ -60,5 +60,5 @@ class Category:
         except:
             pass
 
-    def is_valid(self):
+    def isValid(self):
         return self.__name != None

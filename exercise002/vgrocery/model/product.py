@@ -63,7 +63,7 @@ class Product:
         try:
             if not isinstance(value, float):
                 value = float(re.search(r"\d+(\.\d+)?", str(value).replace(",", ".").strip())[0])
-            if value >= 0.0:                
+            if value >= 0.0 and value <= 100000.00:
                 self.__value = int(value * 10**3) / 10**3               
         except:
             pass
@@ -75,7 +75,7 @@ class Product:
     @category.setter
     def category(self, category: Category):
         self.__category = None
-        if category.is_valid():
+        if category.isValid():
             self.__category = category
 
     @property
@@ -88,5 +88,5 @@ class Product:
         if re.search(r"^\w{1,96}\.(png|jpg|gif)$", picture, re.UNICODE):
             self.__picture = picture
 
-    def is_valid(self):
+    def isValid(self):
         return self.__name != None and self.__value != None and self.__category != None

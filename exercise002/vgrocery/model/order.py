@@ -50,7 +50,7 @@ class Order:
             self.__items.append(items)
 
     @staticmethod
-    def clear_console():
+    def clearConsole():
         try:
             # Clear console on Windows Systems
             clear = lambda: os.system("cls")
@@ -66,17 +66,17 @@ class Order:
                 pass
 
     @staticmethod
-    def format_currency(value, symbol, decimal_separator):
-        return symbol + f"{value:.2f}".replace(".", decimal_separator)
+    def formatCurrency(value, symbol, decimalSeparator):
+        return symbol + f"{value:.2f}".replace(".", decimalSeparator)
 
     def print(self):
-        Order.clear_console()        
+        Order.clearConsole()
         for item in self.__items[0].values():
-            sub_total = Order.format_currency(item.product.value * item.amount, "R$", ",")
+            subTotal = Order.format_currency(item.product.value * item.amount, "R$", ",")
             value = Order.format_currency(item.product.value, "R$", ",")
-            print("Item: {}.\nQuantidade: {}.\nValor unitário: {}.\nSubtotal: {}.\n".format(item.product.name, item.amount, value, sub_total))
-        total = Order.format_currency(self.__total, "R$", ",")        
+            print("Item: {}.\nQuantidade: {}.\nValor unitário: {}.\nSubtotal: {}.\n".format(item.product.name, item.amount, value, subTotal))
+        total = Order.formatCurrency(self.__total, "R$", ",")
         print("Valor final: {}.".format(total))
 
-    def is_valid(self):
+    def isValid(self):
         return len(self.__items) > 0

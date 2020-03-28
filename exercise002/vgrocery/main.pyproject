@@ -1,0 +1,28 @@
+{
+    "files": [
+        "main.py",
+        "view/productsview.py",
+        "view/productsform.py",
+        "view/productsform.ui",
+        "view/mainwindow1.py",
+        "view/mainwindow1.ui",
+        "resources_rc.qrc",
+        "resources_rc.py",
+        "model/category.py",
+        "model/product.py",
+        "model/order.py",
+        "model/item.py",
+        "model/revenues.py",        
+        "controller/database/database.db",
+        "controller/sqlite.py",
+        "controller/productdata.py",
+        "controller/categorydata.py",
+        "images/logo_icon.png",
+        "images/back_icon.png",
+        "images/clear_icon.png",
+        "images/new_icon.png",
+        "images/delete_icon.png",
+        "images/save_icon.png",
+        "images/defaultimage_icon.png"
+    ]
+}

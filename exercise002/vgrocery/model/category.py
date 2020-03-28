@@ -61,4 +61,4 @@ class Category:
             pass
 
     def isValid(self):
-        return self.__name != None
+        return self.__id != None and self.__name != None

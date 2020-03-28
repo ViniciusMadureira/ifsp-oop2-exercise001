@@ -18,12 +18,13 @@ Each product contains a name (str), a description (str) and a value (float).
 """
 class Product:
 
-    def __init__(self, name: str = "", description: str = "", value: float = None, category: Category = None, picture: str=""):
+    def __init__(self, name: str = "", description: str = "", value: float = None, category: Category = None, picture: str="", amount: int = None):
         self.__name = name
         self.__description = description
         self.__value = value
         self.__category = category
         self.__picture = picture
+        self.__amount = amount
 
     @property
     def name(self):
@@ -88,5 +89,15 @@ class Product:
         if re.search(r"^\w{1,96}\.(png|jpg|gif)$", picture, re.UNICODE):
             self.__picture = picture
 
+    @property
+    def amount(self):
+        return self.__amount
+
+    @amount.setter
+    def amount(self, amount: int):
+        self.__amount = None;
+        if amount >= 0 and amount <= 10000:
+            self.__amount = amount
+
     def isValid(self):
-        return self.__name != None and self.__value != None and self.__category != None
+        return self.__name != None and self.__value != None and self.__category != None and self.__amount != None

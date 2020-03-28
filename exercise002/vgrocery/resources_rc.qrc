@@ -1,7 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
     <qresource prefix="/">
-        <file alias="window_icon.png">images/window_icon.png</file>
+        <file alias="logo_icon.png">images/logo_icon.png</file>
         <file alias="back_icon.png">images/back_icon.png</file>
         <file alias="clear_icon.png">images/clear_icon.png</file>
         <file alias="delete_icon.png">images/delete_icon.png</file>

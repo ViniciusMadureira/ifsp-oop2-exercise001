@@ -6,6 +6,7 @@ from view.productsview import ProductsView
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    #app.setStyle("Windows")
     pv = ProductsView()
     #pv.pte_product_value.installEventFilter(self)
     sys.exit(app.exec_())

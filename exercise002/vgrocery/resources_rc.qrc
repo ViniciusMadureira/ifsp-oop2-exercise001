@@ -4,6 +4,7 @@
         <file alias="logo_icon.png">images/logo_icon.png</file>
         <file alias="back_icon.png">images/back_icon.png</file>
         <file alias="clear_icon.png">images/clear_icon.png</file>
+        <file alias="clear-search_icon.png">images/clear-search_icon.png</file>
         <file alias="delete_icon.png">images/delete_icon.png</file>
         <file alias="new_icon.png">images/new_icon.png</file>
         <file alias="save_icon.png">images/save_icon.png</file>

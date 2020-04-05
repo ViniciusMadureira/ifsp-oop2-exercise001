@@ -18,18 +18,18 @@ Each order consists of a list of items (list(Item)), which are not repeated. Eac
 class Order:
 
     def __init__(self):
-        self.__ido = None
+        self.__id = None
         self.__items = []
         self.__total = 0
 
     @property
-    def ido(self):
-        return self.__ido
+    def id(self):
+        return self.__id
 
-    @ido.setter
-    def ido(self, ido: int):        
-        if ido > 0:
-            self.__ido = ido
+    @id.setter
+    def id(self, id: int):
+        if id > 0:
+            self.__id = id
 
     @property
     def total(self):

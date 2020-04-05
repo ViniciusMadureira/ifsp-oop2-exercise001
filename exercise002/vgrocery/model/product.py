@@ -18,13 +18,24 @@ Each product contains a name (str), a description (str) and a value (float).
 """
 class Product:
 
-    def __init__(self, name: str = "", description: str = "", value: float = None, category: Category = None, picture: str="", amount: int = None):
+    def __init__(self, id: int = None, name: str = "", description: str = "", value: float = None, category: Category = None, picture: str="", amount: int = None):
+        self.__id = id
         self.__name = name
         self.__description = description
         self.__value = value
         self.__category = category
         self.__picture = picture
         self.__amount = amount
+
+    @property
+    def id(self):
+        return self.__id
+
+    @id.setter
+    def id(self, id: int):
+        self.__id = None;
+        if id > 0:
+            self.__id = id
 
     @property
     def name(self):
@@ -100,4 +111,4 @@ class Product:
             self.__amount = amount
 
     def isValid(self):
-        return self.__name != None and self.__value != None and self.__category != None and self.__amount != None
+        return self.id != None and self.__name != None and self.__value != None and self.__category != None and self.__amount != None

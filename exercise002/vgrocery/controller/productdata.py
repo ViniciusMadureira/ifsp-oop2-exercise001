@@ -9,51 +9,59 @@ __maintainer__ = "Vinícius Madureira"
 __email__ = "viniciusmadureira@outlook.com"
 __status__ = "Testing"
 
-
 from collections import OrderedDict
 from model.product import Product
 from controller.sqlite import SQLite
 from sqlite3 import Error
 
-
 """
-ProductStore class: Controller to add, delete and update Product type objects in static product's dictionary (OrderedDict).
+ProductData class: Controller to add, delete and update Product type objects in static product's dictionary (OrderedDict).
 """
 class ProductData:
 
     @staticmethod
     def add(product: Product):
-        if not ProductStore.exists(product.name) and product.isValid():
-            ProductStore.products[product.name] = product
-            return True        
+        if product.isValid() and not ProductData.exists(product.name):
+            sqlite = SQLite(SQLite.PATH)
+            try:                
+                values = (product.name, product.description, product.value, product.picture, product.amount, product.category.id)
+                return sqlite.insert("INSERT INTO products(name, description, value, picture, amount, id_category) VALUES (?, ?, ?, ?, ?, ?);", values)
+            except Error as e:
+                print("SQLite Error. Message: {}.".format(str(e)))
         return False
 
     @staticmethod
     def delete(productName: str):
-        if ProductStore.exists(productName):
-            ProductStore.products.pop(productName)
+        if ProductData.exists(productName):
+            ProductData.products.pop(productName)
             return True
         return False
 
     @staticmethod
     def update(product: Product, productName: str):
-        if ProductStore.exists(productName):
-            ProductStore.products[product.name] = ProductStore.products.pop(productName)
+        if ProductData.exists(productName):
+            ProductData.products[product.name] = ProductData.products.pop(productName)
             return True
         return False
 
     @staticmethod
     def exists(productName: str):
-        return productName in ProductStore.products.keys()
+        sqlite = SQLite(SQLite.PATH)
+        try:
+            result = sqlite.select("SELECT COUNT(products.id) FROM products WHERE products.name = '{}';".format(productName))
+            return True if list(result[0])[0] != 0 else False
+        except Error as e:
+            print("SQLite Error. Message: {}.".format(str(e)))
+        return True
 
     @staticmethod
-    def loadProducts():
+    def load():
         sqlite = SQLite(SQLite.PATH)
         products = OrderedDict()
         try:
-            result = sqlite.select("SELECT products.id, categories.id, products.name, products.description, products.value, products.picture, categories.name, products.amount as category FROM products INNER JOIN categories ON products.id_category = categories.id ORDER BY products.name;")
+            result = sqlite.select("SELECT products.id, products.name, products.description, products.value, products.picture, products.amount, categories.id, categories.name as category FROM products INNER JOIN categories ON products.id_category = categories.id ORDER BY products.name;")
             if result:
-                products = result
+               products = result
         except Error as e:
             print("SQLite Error. Message: {}.".format(str(e)))
         return products

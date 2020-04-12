@@ -12,7 +12,8 @@ __status__ = "Testing"
 
 import re
 import sqlite3
-from os.path import dirname, abspath, exists
+from os.path import abspath, exists, dirname
+from pathlib import Path
 import resources
 
 """
@@ -21,37 +22,37 @@ Each product contains a name (str), a description (str) and a value (float).
 """
 class SQLite:    
 
-    PATH = dirname(abspath(__file__)) + '/database/database.db'
+    PATH = str(Path.home()) + "/vgrocery/database.db"
 
-    def __init__(self, file: str):        
-        self.__file = file
+    def __init__(self, filename: str):
+        self.__filename = filename
         self.__connect = None
 
     @property
-    def file(self):
-        return self.__file
+    def filename(self):
+        return self.__filename
 
-    @file.setter
-    def file(self, file: str):
-        self.__file = None
-        try:
-            filename = file.strip()
+    @filename.setter
+    def filename(self, filename: str):
+        self.__filename = None
+        filename = filename.strip()
+        try:            
             if (re.search(r"^\w{1,60}\.db$", filename, re.UNICODE)):
-                self.__file = file
+                self.__filename = filename
         except:
-            pass
+            print("Database file error. Path: {}.".format(filename))
     
     def connect(self):
         self.__connection = None
-        if exists(self.__file):
+        if exists(self.__filename):
             try:
-                self.__connection = sqlite3.connect(self.__file)
+                self.__connection = sqlite3.connect(self.__filename)
             except sqlite3.Error as e:
                 print("Database connection failed. Message: {}.".format(str(e)))
 
     def close(self):
         if self.__connection:
-            self.__connection.close()
+            self.__connection.cursor().close()
 
     def select(self, query: str):
         self.connect()        
@@ -63,5 +64,14 @@ class SQLite:
             return rows
         return False
     
-    def insert(self, query: str):
-        pass
+    def insert(self, query: str, values: tuple):
+        self.connect()
+        if self.__connection:
+            cursor = self.__connection.cursor()
+            cursor.execute(query.strip(), values)
+            self.__connection.commit()
+            #rows = cursor.rowcount
+            lastRowId = cursor.lastrowid
+            self.close()
+            return lastRowId
+        return False

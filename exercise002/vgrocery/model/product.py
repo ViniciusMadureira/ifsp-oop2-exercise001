@@ -59,9 +59,10 @@ class Product:
     def description(self, description):
         self.__description = None
         try:
-            description = str(description).strip()
-            if (2 <= len(description) <= 400):
-                self.__description = description
+            if description != None:
+                description = str(description).strip()
+                if 2 <= len(description) <= 400:
+                    self.__description = description
         except:
             pass
         
@@ -96,8 +97,8 @@ class Product:
 
     @picture.setter
     def picture(self, picture: str):
-        self.__picture = None
-        if re.search(r"^\w{1,96}\.(png|jpg|gif)$", picture, re.UNICODE):
+        self.__picture = None        
+        if picture != None and re.search(r"^(\/\w+)*.(png|jpg|gif)$", picture, re.UNICODE) and len(picture) <= 96:
             self.__picture = picture
 
     @property
@@ -111,4 +112,4 @@ class Product:
             self.__amount = amount
 
     def isValid(self):
-        return self.id != None and self.__name != None and self.__value != None and self.__category != None and self.__amount != None
+        return self.id != None and self.__name != None and self.__value != None and self.__category != None and self.category.isValid() and self.__amount != None

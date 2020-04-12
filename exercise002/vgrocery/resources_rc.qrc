@@ -13,6 +13,8 @@
         <file alias="products_icon.png">images/products_icon.png</file>
         <file alias="revenues_icon.png">images/revenues_icon.png</file>
         <file alias="sales_icon.png">images/sales_icon.png</file>
+        <file alias="dialog-error_icon.png">images/dialog-error_icon.png</file>
+        <file alias="dialog-ok_icon.png">images/dialog-ok_icon.png</file>
         <file alias="database.db">controller/database/database.db</file>
     </qresource>
 </RCC>

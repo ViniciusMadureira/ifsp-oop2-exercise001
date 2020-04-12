@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_frmProducts(object):
     def setupUi(self, frmProducts):
         frmProducts.setObjectName("frmProducts")
-        frmProducts.setWindowModality(QtCore.Qt.WindowModal)
+        #frmProducts.setWindowModality(QtCore.Qt.WindowModal)
         frmProducts.resize(980, 580)
         frmProducts.setMinimumSize(QtCore.QSize(980, 580))
         frmProducts.setMaximumSize(QtCore.QSize(980, 580))
@@ -211,6 +211,7 @@ class Ui_frmProducts(object):
         self.tblProducts.setRowCount(0)
         self.tblProducts.setColumnCount(8)
         self.tblProducts.setObjectName("tblProducts")
+        self.tblProducts.horizontalHeader().setMinimumSectionSize(50)
         self.tblProducts.verticalHeader().setVisible(False)
         self.btnProductsDelete = QtWidgets.QToolButton(frmProducts)
         self.btnProductsDelete.setGeometry(QtCore.QRect(540, 520, 111, 51))

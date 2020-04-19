@@ -5,6 +5,7 @@
         <file alias="back_icon.png">images/back_icon.png</file>
         <file alias="clear_icon.png">images/clear_icon.png</file>
         <file alias="clear-search_icon.png">images/clear-search_icon.png</file>
+        <file alias="refresh_icon.png">images/refresh_icon.png</file>
         <file alias="delete_icon.png">images/delete_icon.png</file>
         <file alias="new_icon.png">images/new_icon.png</file>
         <file alias="save_icon.png">images/save_icon.png</file>
@@ -15,6 +16,9 @@
         <file alias="sales_icon.png">images/sales_icon.png</file>
         <file alias="dialog-error_icon.png">images/dialog-error_icon.png</file>
         <file alias="dialog-ok_icon.png">images/dialog-ok_icon.png</file>
+        <file alias="dialog-information_icon.png">images/dialog-information_icon.png</file>
+        <file alias="dialog-confirm_icon.png">images/dialog-confirm_icon.png</file>
+        <file alias="dialog-cancel_icon.png">images/dialog-cancel_icon.png</file>
         <file alias="database.db">controller/database/database.db</file>
     </qresource>
 </RCC>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dlgConfirm</class>
+ <widget class="QDialog" name="dlgConfirm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>180</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>180</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>400</width>
+    <height>180</height>
+   </size>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>Confirmação</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources_rc.qrc">
+    <normaloff>:/logo_icon.png</normaloff>:/logo_icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white</string>
+  </property>
+  <property name="locale">
+   <locale language="Portuguese" country="Brazil"/>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QLabel" name="lblStatusText">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>20</y>
+     <width>240</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>240</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>240</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>240</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>Tem certeza de que deseja remover este produto permanentemente?</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::NoTextInteraction</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblStatusIcon">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>100</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>100</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>100</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resources_rc.qrc">:/dialog-confirm_icon.png</pixmap>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::NoTextInteraction</set>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnOk">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>140</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Droid Sans</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string extracomment="Confirmar">Confirmar</string>
+   </property>
+   <property name="accessibleName">
+    <string>btnOk</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #3b5998; color: white; font-weight: bold;  QToolTip{background-color: white}</string>
+   </property>
+   <property name="text">
+    <string extracomment="OK">   OK</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../resources_rc.qrc">
+     <normaloff>:/dialog-ok_icon.png</normaloff>:/dialog-ok_icon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::NoArrow</enum>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>140</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Droid Sans</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string extracomment="Cancelar">Cancelar</string>
+   </property>
+   <property name="accessibleName">
+    <string>btnCancel</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #3b5998; color: white; font-weight: bold;  QToolTip{background-color: white}</string>
+   </property>
+   <property name="text">
+    <string extracomment="Cancelar">Cancelar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../resources_rc.qrc">
+     <normaloff>:/dialog-cancel_icon.png</normaloff>:/dialog-cancel_icon.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::NoArrow</enum>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../resources_rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
